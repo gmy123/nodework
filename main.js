@@ -41,11 +41,30 @@ readStream.on("error",function(err){
 
 console.log("程序结束了")
 */
-var hello=require("./hello");
+/*var hello=require("./hello");
 hello.world();
 
 var h=require("./h");
 var H=new h();
 
 H.setName('gmy');
-H.sayHello();
+H.sayHello();*/
+
+var fs=require("fs");
+var data="www.gmy.com这是我的网站";
+var writeStream=fs.createWriteStream("out.txt");
+
+writeStream.write(data,"UTF8");
+writeStream.end();
+
+writeStream.on("finish",function(){
+    console.log("写入完成");
+})
+
+
+writeStream.on("error",function(err){
+    console.log(err.stack);
+})
+
+
+
